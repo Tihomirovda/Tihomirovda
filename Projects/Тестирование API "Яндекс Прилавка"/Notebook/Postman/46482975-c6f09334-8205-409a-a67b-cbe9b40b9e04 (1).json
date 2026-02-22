@@ -1,0 +1,3903 @@
+{
+	"info": {
+		"_postman_id": "46482975-c6f09334-8205-409a-a67b-cbe9b40b9e04",
+		"name": "API Яндекс Прилавка",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Создание пользователя",
+			"item": [
+				{
+					"name": "Создание пользователя",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "917d84c1-831d-4be9-b2ac-b7d9524bfa51",
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.collectionVariables.set(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "46482975-253a1d93-4c94-41c2-9ae1-b2f326e8d967",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Дмитрий\",\r\n    \"phone\": \"+79056359218\",\r\n    \"address\": \"г. Москва, ул. Пушкина, д. 10\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "46482975-da993a5c-536a-447d-9c8c-c572859ea010"
+		},
+		{
+			"name": "Наборы",
+			"item": [
+				{
+					"name": "Создание набора",
+					"id": "46482975-a9a1ee0d-9578-45be-8c3f-57ad350c29a6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cardId\": 1,\r\n    \"name\": \"Под обучение\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/kits",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"kits"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение всех наборов",
+					"id": "46482975-a9a34ebd-9c60-44dd-b3e6-28af141026d4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/kits?cardId=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"kits"
+							],
+							"query": [
+								{
+									"key": "cardId",
+									"value": "1"
+								},
+								{
+									"key": "cardId",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавление продуктов в набор",
+					"id": "46482975-b8052f5d-b4cf-445b-9db2-f7b86d3cf039",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 4,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 5,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 6,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 7,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 8,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 9,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 11,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 12,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 13,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 14,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 15,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 16,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 17,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 18,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 19,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 20,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 21,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 22,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 23,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 24,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 25,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 26,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 27,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 28,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 29,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 30,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/kits/8/products",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"kits",
+								"8",
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "46482975-69707e02-6042-4293-89e1-757a36a06cd3",
+							"name": "Добавление 30 продуктов в набор",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 4,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 5,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 6,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 7,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 8,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 9,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 11,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 12,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 13,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 14,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 15,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 16,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 17,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 18,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 19,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 20,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 21,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 22,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 23,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 24,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 25,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 26,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 27,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 28,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 29,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 30,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-ec2199b8-5ed3-4b0c-a9cb-1f12d92bfbe2",
+							"name": "Добавление 29 продуктов в набор",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 4,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 5,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 6,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 7,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 8,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 9,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 11,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 12,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 13,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 14,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 15,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 16,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 17,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 18,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 19,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 20,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 21,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 22,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 23,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 24,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 25,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 26,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 27,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 28,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 29,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"responseTime": null,
+							"body": ""
+						},
+						{
+							"id": "46482975-833715c5-992e-482d-be5f-b714e19d0add",
+							"name": "Добавление продукта в набор",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-cf673b5f-4632-4fa8-944b-84723c9e545e",
+							"name": "Добавление одного и того же продукта в набор",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 4,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 5,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 6,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 7,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 8,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 9,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 11,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 12,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 13,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 14,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 15,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 16,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 17,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 18,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 19,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 20,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 21,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 22,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 23,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 24,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 25,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 26,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 27,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 28,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 29,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 30,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Добавление продуктов в набор Copy",
+					"id": "46482975-943a3b6c-203c-4946-ab37-9e9f5da02ad3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 4,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 5,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 6,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 7,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 8,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 9,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 11,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 12,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 13,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 14,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 15,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 16,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 17,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 18,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 19,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 20,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 21,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 22,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 23,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 24,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 25,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 26,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 27,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 28,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 29,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 30,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/kits/6/products",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"kits",
+								"6",
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "46482975-e4420c2e-e229-43e6-be35-fc16885f2488",
+							"name": "id = 0",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": 0,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-2668cf27-e6a5-4459-9818-ba18ac74340c",
+							"name": "Добавление 31 продуктов в набор",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 4,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 5,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 6,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 7,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 8,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 9,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 10,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 11,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 12,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 13,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 14,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 15,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 16,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 17,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 18,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 19,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 20,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 21,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 22,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 23,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 24,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 25,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 26,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 27,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 28,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 29,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 30,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 31,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"responseTime": null,
+							"body": ""
+						},
+						{
+							"id": "46482975-690ab1ee-2415-41f0-a02c-6536043874f4",
+							"name": "id = null",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": null,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-530dd75a-6b5f-4d05-b66e-a3c5ceea379f",
+							"name": "id = string",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": \"1\",\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-4fe6e7a7-9056-4e91-b6fe-58d28eb05fa9",
+							"name": "id = отсутствует",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-9fb9832a-4862-498c-9ead-e7fa67ca0acc",
+							"name": "Quantity = 0",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 0\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-b5fb6a55-6514-429e-85d3-0e571c7e96b0",
+							"name": "Quantity = 1000",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 1000\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-04d1be2a-5b00-48ea-a69b-b640363ad397",
+							"name": "Quantity = null",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": null\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-e10d48b6-19bc-40e5-937e-518893a5e588",
+							"name": "Quantity = string",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": \"1\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-a4e35b0c-8f88-4ea8-9d61-a054b4c2cabd",
+							"name": "Quantity = отсутствует",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-7f1c9d66-4da3-4782-b7e6-d4c5ce4ca5a6",
+							"name": "Добавление продуктов в не существующий набор",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/10/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"10",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-503988eb-537a-43bb-baa0-a80f89906ea8",
+							"name": "Добавление продуктов в набор если массив некорректен",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": \"1\",\r\n            \"quantity\": \"1\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-ae8acee6-7f13-4fd0-9616-8faad4c27854",
+							"name": "Пустой массив продукт листов",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										"7",
+										"products"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-bb516f2f-4091-4a4a-a8c1-9311ba42ba0f",
+							"name": "Неверный endpoint",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ProductList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/kits/:?7/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"kits",
+										":"
+									],
+									"query": [
+										{
+											"key": "7/products",
+											"value": null
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"responseTime": null,
+							"body": ""
+						}
+					]
+				}
+			],
+			"id": "46482975-1622f1a5-3dcb-459f-9e9b-9a812ba4b985"
+		},
+		{
+			"name": "Корзина",
+			"item": [
+				{
+					"name": "Создание корзины",
+					"id": "46482975-827f7831-93b3-40ec-8f89-839d26554dc7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"quantity\": 3\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/orders",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Добавление товаров в корзину",
+					"id": "46482975-08df316d-0213-4726-b174-85cf922126a9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"productsList\": [\r\n                {\r\n                    \"id\": 1,\r\n                    \"quantity\": 2\r\n                },\r\n                {\r\n                    \"id\": 3,\r\n                    \"quantity\": 1\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/orders/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "46482975-97a23aa7-728c-4e9d-aaf7-ca2b1b63d683",
+							"name": "Возможность добавления продуктов",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 2\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 4,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-8ec7726d-6040-457d-9e11-e25af17f5e9e",
+							"name": "Отображение суммы доставки",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": 3,\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-c889a96b-b0bc-492a-8c2c-4e1d42140410",
+							"name": "Добавление существующего продукта",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 2\r\n        },\r\n        {\r\n            \"id\": 3,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Добавление товаров в корзину Copy",
+					"id": "46482975-48d66233-8b89-4d40-a1cc-59f53949d0fb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"productsList\": [\r\n                {\r\n                    \"id\": 1,\r\n                    \"quantity\": 2\r\n                },\r\n                {\r\n                    \"id\": 3,\r\n                    \"quantity\": 1\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/orders/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"2"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "46482975-428255d5-9380-457d-a870-3e51c4976252",
+							"name": "Добавление не существующего продукта",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": 100,\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-8027d6ac-eb05-42e4-aff4-b325e1f83c2b",
+							"name": "Неверный тип данных id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{ \"productsList\": [\r\n        {\r\n            \"id\": \"3\",\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-cbc7a549-431d-4459-a67e-4354ef57c7b3",
+							"name": "id = null",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": null,\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-a77eea79-dcbd-4dff-be1e-b187807050a3",
+							"name": "id = 0",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": 0,\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-d6947ceb-5e6b-42b5-9f39-38ca6e87d5c7",
+							"name": "Добавление продукта которого нету на складе",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": 2,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-58c609ce-ccc7-4a85-8b8e-a6e8882f73d5",
+							"name": "Без параметра id",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-84e1f2ee-0f9d-48bb-8218-75e020408f67",
+							"name": "Добавление продукта если на складах нету количества",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 100\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-c97ed0b4-759d-456a-9980-46d0e89a1daf",
+							"name": "Quantity = string",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": \"2\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-ecde1357-2b29-4b57-b007-ef483db38fa9",
+							"name": "Quantity = null",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": null\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-45195451-5434-4e10-a19d-9d26ce3718dd",
+							"name": "Quantity = 0",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 0\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-5bf38203-edb2-4373-b362-f6e817a4187f",
+							"name": "Без параметра Quantity",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-9bbf6fae-358e-43d8-b680-caae6ff417b2",
+							"name": "Добавление в несуществующую корзину",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/20",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"20"
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"responseTime": null,
+							"body": ""
+						},
+						{
+							"id": "46482975-fbf7f551-25d4-4636-b3f6-7b78c9f13ad6",
+							"name": "Пустой массив продуктов",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-97bca8eb-e6de-4fe4-aed4-9d824d6f0f8d",
+							"name": "Другой тип данных массива",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": \"1\",\r\n            \"quantity\": \"2\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-bc1ad500-583b-49ef-85ae-41de42b56de9",
+							"name": "id = text",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": \"text\",\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-9674f26e-8bc4-4a97-954a-5b655bf820db",
+							"name": "text",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "text/plain",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productsList\": [\r\n        {\r\n            \"id\": 3,\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"2"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-e7592244-ca8c-44c2-aa5b-792ba3347a06",
+							"name": "Неверный endpoint",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productList\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 1\r\n        },\r\n        {\r\n            \"id\": 2,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/v1/orders/?2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										""
+									],
+									"query": [
+										{
+											"key": "2",
+											"value": null
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Получение продуктов в корзине",
+					"id": "46482975-4688c410-c8f1-4a0b-bbe5-1992555456c2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/orders/14",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"14"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "46482975-714f86f5-5c1c-416a-b44f-476bc9735948",
+							"name": "Запрос списка",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1/orders/14",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"14"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-55945ebe-0573-4342-ac95-2d85c779d2e2",
+							"name": "Запрос не существующей корзины",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1/orders/20",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"20"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-4e5dd80c-02f4-4eeb-b453-8d74fd6453dc",
+							"name": "Запрос если не передали токен",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1/orders/14",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"14"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-54c021ba-05ec-4b2c-bf48-3f36e1de16ca",
+							"name": "Неверный запрос",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1/orders/:?14",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										":"
+									],
+									"query": [
+										{
+											"key": "14",
+											"value": null
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Оформление заказа",
+					"id": "46482975-6df7cbda-14c0-4021-85df-7a8ac991e850",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/orders/12/complete",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"12",
+								"complete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Удаление корзины",
+					"id": "46482975-e2e894bf-af68-40da-8ac0-5b9f4bd9590d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v1/orders/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "46482975-904bcbb9-d709-4de2-8329-74caab617bee",
+							"name": "Удаление корзины",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1/orders/20",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"20"
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"responseTime": null,
+							"body": ""
+						},
+						{
+							"id": "46482975-3de7be3e-9cfe-4db0-9dbc-d96c3eddd22b",
+							"name": "Удаление несуществующей корзины",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1/orders/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"1"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-b465cbfe-8304-4dec-8fda-07fde0a55af3",
+							"name": "Удаление корзины без authToken",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1/orders/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										"1"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-5d7e4d11-5c69-4574-b038-268c453e8c1a",
+							"name": "Неверный endpoint",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/api/v1/orders/:?2",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"orders",
+										":"
+									],
+									"query": [
+										{
+											"key": "2",
+											"value": null
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
+				}
+			],
+			"id": "46482975-1ecf19d2-6574-4392-9ac4-1d171643d1d0"
+		},
+		{
+			"name": "Доставка",
+			"item": [
+				{
+					"name": "Проверка доставки \"Привезём быстро\"",
+					"id": "46482975-d71077e2-8c61-4097-8c43-0a36cb3cfde2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<InputModel>\r\n    <productsCount>7</productsCount>\r\n    <productsWeight>2,5</productsWeight>\r\n    <deliveryTime>25</deliveryTime>\r\n</InputModel>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fast-delivery",
+								"v3.1.1",
+								"calculate-delivery.xml"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "46482975-75424380-6328-4e1e-98c4-4466b725bc31",
+							"name": "Количество товаров = 1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>1</productsCount>\r\n    <productsWeight>1</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-ca1ac061-1e83-404e-8a47-bbceb9c8315e",
+							"name": "Количество товаров = 6",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>6</productsCount>\r\n    <productsWeight>1</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-80ffafd7-2aa1-46fe-8269-fba6c90e7bd9",
+							"name": "Количество товаров = 7",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>7</productsCount>\r\n    <productsWeight>1</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-cf47ffd5-e6d6-4c01-aaf5-f32e7b30a29b",
+							"name": "Количество товаров = 8",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>8</productsCount>\r\n    <productsWeight>4</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-ccc9c00c-f428-4e4b-84a4-111011c04885",
+							"name": "Количество товаров = 13",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>13</productsCount>\r\n    <productsWeight>4</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-2353eddb-4589-4285-97a6-e8949020618b",
+							"name": "Количество товаров = 14",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>14</productsCount>\r\n    <productsWeight>4</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-7edf7eae-f34e-40cc-b106-d9e2d32a2772",
+							"name": "Вес товаров = 0,1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>5</productsCount>\r\n    <productsWeight>0,1</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-d526088f-94f8-4f70-be1b-82797da76520",
+							"name": "Вес товаров = 2,4",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>5</productsCount>\r\n    <productsWeight>2,4</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-90eade7b-8344-4f41-96ee-7dfeb3e91125",
+							"name": "Вес товаров = 2,5",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>5</productsCount>\r\n    <productsWeight>2,5</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-2058ddad-ce69-47c0-8fae-0c13b15ee5f1",
+							"name": "Вес товаров = 2,6",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>10</productsCount>\r\n    <productsWeight>2,6</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-f404d894-0c18-4eef-91ac-9eafc96ca0d1",
+							"name": "Вес товаров = 5,9",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>10</productsCount>\r\n    <productsWeight>5,9</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-0f1fc9c7-8a5a-4fa5-8f1c-5b88fa80501f",
+							"name": "Вес товаров = 6",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>10</productsCount>\r\n    <productsWeight>6</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-0f2b5b45-90ee-49ae-9599-a8f57842529a",
+							"name": "Вес товаров = 6,1",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>10</productsCount>\r\n    <productsWeight>6,1</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-97553ce3-abf7-411a-9d50-5dd38f507b00",
+							"name": "Ожидаемое время = 7",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>5</productsCount>\r\n    <productsWeight>1</productsWeight>\r\n    <deliveryTime>7</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-df3e4055-887c-48c6-8e1f-9c1be4fef667",
+							"name": "Ожидаемое время = 8",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>5</productsCount>\r\n    <productsWeight>1</productsWeight>\r\n    <deliveryTime>8</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-352185d1-3adb-4de8-9d51-3d680d3004c9",
+							"name": "Ожидаемое время = 20",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>10</productsCount>\r\n    <productsWeight>4</productsWeight>\r\n    <deliveryTime>20</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-6d0d3b1d-5805-4c26-9ce9-f26c9dbda15b",
+							"name": "Ожидаемое время = 21",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>10</productsCount>\r\n    <productsWeight>4</productsWeight>\r\n    <deliveryTime>21</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-34092849-29ba-42d3-bc88-4c2cb4480d32",
+							"name": "Доставка клиенту при 15 товарах",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>15</productsCount>\r\n    <productsWeight>1</productsWeight>\r\n    <deliveryTime>10</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-d2e69075-776e-4002-9e46-329859401104",
+							"name": "Доставка клиенту при 7 кг веса товара",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>10</productsCount>\r\n    <productsWeight>7</productsWeight>\r\n    <deliveryTime>10</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Проверка доставки \"Привезём быстро\" Copy",
+					"id": "46482975-cd6c5b39-bf75-4a9b-9be5-553d8fb4a784",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/xml",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<InputModel>\r\n    <productsCount>7</productsCount>\r\n    <productsWeight>2,5</productsWeight>\r\n    <deliveryTime>25</deliveryTime>\r\n</InputModel>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"fast-delivery",
+								"v3.1.1",
+								"calculate-delivery.xml"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "46482975-63db412f-a26c-4e8c-912e-a06b5f11ec62",
+							"name": "Количество продуктов = 0",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>0</productsCount>\r\n    <productsWeight>1</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-a3c8140c-8fd4-4219-b80f-1cffbaccc5b5",
+							"name": "Вес товаров = 0",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>5</productsCount>\r\n    <productsWeight>0</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-a7eb7dd2-d86a-4ead-a860-62b44b3bf93b",
+							"name": "В нерабочие часы 6",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>1</productsCount>\r\n    <productsWeight>1</productsWeight>\r\n    <deliveryTime>6</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-01914f5c-a256-4671-b13a-c5315dcb81fb",
+							"name": "В нерабочие часы 22",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>1</productsCount>\r\n    <productsWeight>1</productsWeight>\r\n    <deliveryTime>22</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-c096b255-94da-45ac-bc1a-5bc3875c254e",
+							"name": "Неверный тип данных",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>1</productsCount>\r\n    <productsWeight>1</productsWeight>\r\n    <deliveryTime>15,5</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-f6d084aa-0081-46a0-b8be-310b3d7e94fd",
+							"name": "Неверная структура запроса",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>1</productsCount>\r\n    <productsWeight>1</productsWeight>\r\n    <deliveryTime>16</deliveryTime>\r\n    <InputModel> ",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-bc22aec0-bd4c-4d04-abc3-cd0f2e77cbe0",
+							"name": "Пустые значения",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>null</productsCount>\r\n    <productsWeight>null</productsWeight>\r\n    <deliveryTime>25</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						},
+						{
+							"id": "46482975-80a46e6a-fbdc-4b1b-8058-9d3be4c4a962",
+							"name": "Отсутствие одного из эллемента",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsWeight>5</productsWeight>\r\n    <deliveryTime>25</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-delivery.xml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-delivery.xml"
+									]
+								}
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"domain": "",
+									"path": ""
+								}
+							],
+							"responseTime": null,
+							"body": ""
+						},
+						{
+							"id": "46482975-b7358285-ae69-49a0-91eb-bed1e5c2bcbe",
+							"name": "Неверный запрос",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "<InputModel>\r\n    <productsCount>7</productsCount>\r\n    <productsWeight>1</productsWeight>\r\n    <deliveryTime>15</deliveryTime>\r\n</InputModel>",
+									"options": {
+										"raw": {
+											"language": "xml"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/fast-delivery/v3.1.1/calculate-deliveryxml",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"fast-delivery",
+										"v3.1.1",
+										"calculate-deliveryxml"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Проверка стоимости",
+					"id": "46482975-e06ab67b-3b77-4223-9a77-923765c41b40",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"products\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantity\": 1\r\n        }\r\n    ],\r\n    \"deliveryTime\": 7\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/couriers/check",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"couriers",
+								"check"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "46482975-2aa07839-b2a3-41ab-9c9b-2537950e11e3"
+		},
+		{
+			"name": "Склад",
+			"item": [
+				{
+					"name": "Получить список складов",
+					"id": "46482975-5ff470dc-7d3a-41c4-8cda-0460b36b6fd7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v1/warehouses",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"warehouses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Проверка наличия товаров на складах",
+					"id": "46482975-45dbe0d6-6b0c-45cc-a82f-77119e0b9de3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"products\": [\r\n        {\r\n            \"id\":1,\r\n            \"quantity\": 2 \r\n        },\r\n        {\r\n            \"id\":3,\r\n            \"quantity\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/warehouses/check",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"warehouses",
+								"check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Проверка количества продуктов на складах",
+					"id": "46482975-b47205e4-c357-4a4b-8513-318e875ac63a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ids\": [\r\n        1,\r\n        2,\r\n        4,\r\n        5,\r\n        96\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/v1/warehouses/amount",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"warehouses",
+								"amount"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "46482975-1dc33ed8-2072-4e77-b6d0-61a462954bde"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "5fcec659-a85d-4404-a65a-49a56bea7e0a",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4cfa12e7-d059-40d5-9e80-aa70099a251f",
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
